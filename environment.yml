@@ -1,0 +1,19 @@
+name: citibike
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - jupyterlab
+  - seaborn
+  - scipy
+  - statsmodels
+  - ipykernel
+  - pip
+  - pip:
+      - plotly
+      - xgboost
