@@ -13,6 +13,11 @@ def preprocess(df):
     # Preprocess the data, extract the date and time information
 
     df['started_at'] = pd.to_datetime(df['started_at'], format='ISO8601')
+
+    # As may 2024 data is not available, we will filter the data before May 1, 2024
+    cutoff_date = pd.Timestamp('2024-05-01')
+    df = df[df['started_at'] < cutoff_date]
+
     df['ended_at'] = pd.to_datetime(df['ended_at'], format='ISO8601')
     df['year_started'] = df['started_at'].dt.year
     df['month_started'] = df['started_at'].dt.month
@@ -30,6 +35,5 @@ def preprocess(df):
     df['minute_ended'] = df['ended_at'].dt.minute
     df['second_ended'] = df['ended_at'].dt.second
 
-    df = df[(df['year_started'] != 2024) & (df['month_started'] != '5')]
 
     return df

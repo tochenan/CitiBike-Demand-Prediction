@@ -122,5 +122,6 @@ def analyse_data_statistics(df):
 if __name__ == '__main__':
     df = load_data()
     df = preprocess(df)
+    df = df[df['year_started'] != 2024]
     analyse_data_statistics(df)
     
