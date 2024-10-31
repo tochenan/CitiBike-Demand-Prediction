@@ -34,10 +34,13 @@ def analyse_data_statistics(df):
         hour_count = df.groupby(['year_started','month_started','weekday_started','hour_started']).size().reset_index(name='count')
 
         weekday_count = df.groupby(['year_started','month_started','weekday_started']).size().reset_index(name='count')
+        weekday_peak_count = hour_count.groupby(['year_started','month_started', 'weekday_started']).agg({'count':'max'}).reset_index()
+
+
 
         month_count = df.groupby(['year_started', 'month_started']).size().reset_index(name='count')
 
-        return month_count, weekday_count, hour_count
+        return month_count, weekday_count, hour_count, weekday_peak_count
     
     
     def plotting(df):
@@ -84,6 +87,16 @@ def analyse_data_statistics(df):
         plt.xticks(rotation=90)
         sns.despine()
         plt.savefig(f'{viz_path}Seasonality of rides per weekday.png', dpi=300, transparent=True)
+
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax_twin = ax.twinx()
+        sns.barplot(x='weekday_started', y='count', data=seasonality_count(df)[3])
+        sns.pointplot(x='weekday_started', y='count', hue = 'year_started', data=seasonality_count(df)[3], ax=ax_twin)
+        plt.title('Seasonality of rides per weekday')
+        plt.xticks(rotation=90)
+        sns.despine()
+        plt.savefig(f'{viz_path}Seasonality of peak rides.png', dpi=300, transparent=True)
 
         fig, ax = plt.subplots(figsize=(10, 6))
         ax_twin = ax.twinx()
