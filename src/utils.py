@@ -22,6 +22,14 @@ def preprocess(df):
     df['minute_started'] = df['started_at'].dt.minute
     df['second_started'] = df['started_at'].dt.second
 
+    df['year_ended'] = df['ended_at'].dt.year
+    df['month_ended'] = df['ended_at'].dt.month
+    df['day_ended'] = df['ended_at'].dt.day
+    df['weekday_ended'] = df['ended_at'].dt.weekday
+    df['hour_ended'] = df['ended_at'].dt.hour
+    df['minute_ended'] = df['ended_at'].dt.minute
+    df['second_ended'] = df['ended_at'].dt.second
+
     df = df[(df['year_started'] != 2024) & (df['month_started'] != '5')]
 
     return df

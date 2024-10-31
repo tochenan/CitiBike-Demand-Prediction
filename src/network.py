@@ -2,6 +2,7 @@ import networkx as nx
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import pandas as pd
+from utils import load_data, preprocess
 
 def reformat_df_for_graph(df):
     # Group by hour, start station, and end station to refromat the dataframe for graph
@@ -139,5 +140,14 @@ def lagged_node_features(df):
         else:
             node_features_df.rename(columns = {'in_degree': f'in_degree_{hour}', 'out_degree': f'out_degree_{hour}', 'community': f'community_{hour}', 'betweenness': f'betweenness_{hour}', 'pagerank': f'pagerank_{hour}'}, inplace = True)
             result = pd.merge(result, node_features_df, on = 'station', how = 'outer')
-            
+
     return result
+
+
+def graph_analysis():
+    df = load_data()
+    df = preprocess(df)
+    df = reformat_df_for_graph(df)
+    lagged_node_features(df)
+    return df
+

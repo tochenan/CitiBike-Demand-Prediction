@@ -31,11 +31,13 @@ def analyse_data_statistics(df):
         return month_duration, day_duration
     
     def seasonality_count(df):
+        hour_count = df.groupby(['year_started','month_started','weekday_started','hour_started']).size().reset_index(name='count')
+
+        weekday_count = df.groupby(['year_started','month_started','weekday_started']).size().reset_index(name='count')
+
         month_count = df.groupby(['year_started', 'month_started']).size().reset_index(name='count')
-        day_count = df.groupby(['year_started','weekday_started']).size().reset_index(name='count').sort_values(by='weekday_started')
-        hour_count = df.groupby(['year_started','hour_started']).size().reset_index(name='count')
-        day_hour_count = df.groupby(['weekday_started', 'hour_started']).size().reset_index(name='count')
-        return month_count, day_count, hour_count, day_hour_count
+
+        return month_count, weekday_count, hour_count
     
     
     def plotting(df):
@@ -95,7 +97,7 @@ def analyse_data_statistics(df):
 
         plt.figure(figsize=(10, 6))
         plt.tight_layout()
-        sns.barplot(x='hour_started', y='count', hue = 'weekday_started', data=seasonality_count(df)[3])
+        sns.barplot(x='hour_started', y='count', hue = 'weekday_started', data=seasonality_count(df)[2])
         plt.title('Seasonality of rides per hour and weekday')
         plt.xticks(rotation=90)
         sns.despine()
@@ -105,7 +107,7 @@ def analyse_data_statistics(df):
     
 
 if __name__ == '__main__':
-    df = load_data(path)
+    df = load_data()
     df = preprocess(df)
     analyse_data_statistics(df)
     
