@@ -1,7 +1,7 @@
 from glob import glob
 import pandas as pd
 import os
-PATH = 'data/'
+PATH = '../data/'
 
 def load_data(path = PATH):
     # Load all csv files in the folder

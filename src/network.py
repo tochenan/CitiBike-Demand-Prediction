@@ -6,7 +6,8 @@ from utils import load_data, preprocess
 
 def reformat_df_for_graph(df):
     # Group by hour, start station, and end station to refromat the dataframe for graph
-    df = df.groupby(['hour_started', 'start_station_name', 'end_station_name']).size().reset_index(name='count')
+    df = df.groupby(['year_started', 'month_started', 'day_started', 'hour_started', 'start_station_name', 'end_station_name']).size().reset_index(name='count')
+    df = df.groupby(['hour_started', 'start_station_name', 'end_station_name'])['count'].mean().reset_index(name='count')
     return df
 
 def build_graph(df):
@@ -120,11 +121,11 @@ def node_features(G, add_attribute = False):
 
 
     # create a dataframe from the node features
-    df = pd.DataFrame(columns=['station', 'in_degree', 'out_degree', 'community', 'betweenness', 'pagerank'])
-    df['station'] = list(G.nodes)
+    df = pd.DataFrame(columns=['station_name', 'in_degree', 'out_degree', 'community', 'betweenness', 'pagerank'])
+    df['station_name'] = list(G.nodes)
     df['in_degree'] = [v for k, v in indegrees]
     df['out_degree'] = [v for k, v in outdegrees]
-    df['community'] = df['station'].map(communities)
+    df['community'] = df['station_name'].map(communities)
     df['betweenness'] = [v for k, v in betweenness.items()]
     df['pagerank'] = [v for k, v in pageranks.items()]
     return df
@@ -135,11 +136,11 @@ def lagged_node_features(df):
         filtered_df = df[df['hour_started'] == hour]
         G = build_graph(filtered_df)
         node_features_df = node_features(G)
+        node_features_df.rename(columns = {'in_degree': f'in_degree_{hour}', 'out_degree': f'out_degree_{hour}', 'community': f'community_{hour}', 'betweenness': f'betweenness_{hour}', 'pagerank': f'pagerank_{hour}'}, inplace = True)
         if hour == 0:
             result = node_features_df
         else:
-            node_features_df.rename(columns = {'in_degree': f'in_degree_{hour}', 'out_degree': f'out_degree_{hour}', 'community': f'community_{hour}', 'betweenness': f'betweenness_{hour}', 'pagerank': f'pagerank_{hour}'}, inplace = True)
-            result = pd.merge(result, node_features_df, on = 'station', how = 'outer')
+            result = pd.merge(result, node_features_df, on='station_name')
 
     return result
 
@@ -148,6 +149,9 @@ def graph_analysis():
     df = load_data()
     df = preprocess(df)
     df = reformat_df_for_graph(df)
-    lagged_node_features(df)
-    return df
+    result = lagged_node_features(df)
+    return result
 
+
+if __name__ == '__main__':
+    result = graph_analysis()

@@ -46,6 +46,7 @@ def visualize_seasonality_decomposition(df, period = 7):
     # Visualize the seasonality decomposition
     result = seasonal_decompose(df['count'], model='additive', period=period)  
     result.plot()
+    plt.savefig(f'{viz_path}seasonality_decomposition.png', dpi=300, transparent=True)
     plt.show()
 
 
@@ -145,10 +146,10 @@ def model_evaluation(test, forecast):
 def visualize_forecast(train, test, fitted, forecast, model_name):
     # Visualize the forecast
     plt.figure(figsize=(6, 4))
-    plt.plot(train, label='Observed')
-    plt.plot(fitted, label='Fitted', color='green')
-    plt.plot(test, label='Observed')
-    plt.plot(forecast, label='Forecast', color='red')
+    plt.plot(train, label='Observed', color = 'Tab:blue')
+    plt.plot(fitted, label='Fitted', color='Tab:green')
+    plt.plot(test, label='Observed', color = 'Tab:orange')
+    plt.plot(test.index, forecast, label='Forecast', color='Tab:red')
     plt.legend()
     sns.despine()
     plt.savefig(f'{viz_path}{model_name}_forcast.png', dpi=300, transparent=True)
@@ -162,18 +163,24 @@ def main():
     demand = temporal_demand_extraction(df)
     train, test = train_test_split(demand)
 
+    # visualize the seasonality decomposition
+    visualize_seasonality_decomposition(demand)
+
     # fit the TBATS model
     tbat_fitted, tbats_forecasts = tbats_forecast(train, test)
 
     # fit the XGBoost model
     xgb_fitted, xgb_forecasts = xgboost_forecast(train, test)
+     # visualize the forecast
+    visualize_forecast(train['count'], test['count'], xgb_fitted, xgb_forecasts, 'xgb')
 
     # generate time-lagged features
     demand = generate_time_lagged_features(demand)
 
     # fit time-lagged features to XGBoost model
     train_lagged, test_lagged = train_test_split(demand)
-    xgb_lagged_fitted, xgb_lagged_forcast = xgboost_forecast(train, test)
+    xgb_lagged_fitted, xgb_lagged_forcast = xgboost_forecast(train_lagged, test_lagged)
+
 
 
     # evaluate the TBATS model
@@ -190,6 +197,8 @@ def main():
     summary.index = ['TBATS', 'XGBoost', 'XGBoost with time-lagged features']
 
     summary.to_csv(f'{save_path}demand_model_performance.csv')
+
+
 
 if __name__ == '__main__':
     main()

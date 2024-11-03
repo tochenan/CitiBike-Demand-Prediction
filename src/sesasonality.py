@@ -108,7 +108,7 @@ def analyse_data_statistics(df):
         plt.savefig(f'{viz_path}Seasonality of rides per hour.png', dpi=300, transparent=True)
 
 
-        plt.figure(figsize=(10, 6))
+        plt.figure(figsize=(20, 6))
         plt.tight_layout()
         sns.barplot(x='hour_started', y='count', hue = 'weekday_started', data=seasonality_count(df)[2])
         plt.title('Seasonality of rides per hour and weekday')
