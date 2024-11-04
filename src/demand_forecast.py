@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from joblib import dump, load
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.model_selection import GridSearchCV
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -12,7 +13,8 @@ from xgboost import XGBRegressor
 from utils import load_data, preprocess
 
 viz_path = 'viz/'
-save_path = 'model_performance/'
+save_path = 'evaluation/'
+model_path = 'models/'
 
 # DATA PREPROCESSING and FEATURE ENGINEERING
 
@@ -146,6 +148,9 @@ def tbats_forecast(train, test, seasonality=[7, 7 * 12]):
     # Summarize model effects
     print(model.summary())
 
+    # Save the model
+    dump(model, f'{model_path}tbats_model.joblib')
+
     # Forecast future values, e.g., forecast the next 48 hours
     tbats_fitted = model.y_hat
     tbats_forecasts = model.forecast(steps=len(test))
@@ -154,12 +159,11 @@ def tbats_forecast(train, test, seasonality=[7, 7 * 12]):
 
 
 # XGBoost model
-def xgboost_forecast(train, test, visualize=True):
+def xgboost_forecast(train, test, model_name='xgboost'):
     """Forecast the demand using XGBoost model and return the fitted and forecasted values
     Args:
     train: A pandas dataframe
     test: A pandas dataframe
-    visualize: A boolean indicating whether to visualize the forecast
     Returns:
     xgb_fitted: A numpy array
     xgb_forecast: A numpy array"""
@@ -199,6 +203,9 @@ def xgboost_forecast(train, test, visualize=True):
 
     # Get the best parameters
     best_model = grid_search.best_estimator_
+
+    # Save the best model
+    dump(best_model, f'{model_path}{model_name}.joblib')
 
     # use the best model to make predictions
     xgb_fitted = best_model.predict(X_train)
@@ -247,7 +254,7 @@ def train_and_evaluate_all_models(demand, train, test):
     demand = generate_time_lagged_features(demand)
     train_lagged, test_lagged = train_test_split(demand)
     xgb_lagged_fitted, xgb_lagged_forcast = xgboost_forecast(
-        train_lagged, test_lagged)
+        train_lagged, test_lagged, 'XGBoost with time-lagged features')
 
     # Evaluate the TBATS model
     tbats_performance = model_evaluation(test['count'], tbats_forecasts)
@@ -257,7 +264,8 @@ def train_and_evaluate_all_models(demand, train, test):
 
     # Evaluate the XGBoost model with time-lagged features
     xgb_lagged_performance = model_evaluation(
-        test_lagged['count'], xgb_lagged_forcast)
+        test_lagged['count'],
+        xgb_lagged_forcast)
 
     # Summarize the performance
     summary = pd.concat([tbats_performance, xgb_performance,
@@ -265,28 +273,34 @@ def train_and_evaluate_all_models(demand, train, test):
     summary.index = ['TBATS', 'XGBoost', 'XGBoost with time-lagged features']
 
     # get the best model
-    best_model = summary['MAPE'].idxmin()
-    best_fitted = xgb_fitted if best_model == 'XGBoost' else tbat_fitted if best_model == 'TBATS' else xgb_lagged_fitted
-    best_forecast = xgb_forecasts if best_model == 'XGBoost' else tbats_forecasts if best_model == 'TBATS' else xgb_lagged_forcast
+    best_model_name = summary['MAPE'].idxmin()
+    best_fitted = xgb_fitted if best_model_name == 'XGBoost' else tbat_fitted if best_model_name == 'TBATS' else xgb_lagged_fitted
+    best_forecast = xgb_forecasts if best_model_name == 'XGBoost' else tbats_forecasts if best_model_name == 'TBATS' else xgb_lagged_forcast
 
     summary.to_csv(f'{save_path}demand_model_performance.csv')
 
-    return best_model, best_fitted, best_forecast
+    return best_model_name, best_fitted, best_forecast
 
 
 # DEMAND PREDICTION
 
-def forecast_demand(model, year, month, weekday):
+def forecast_demand(model_name, year, month, weekday):
     """Forecast the demand for a specific year, month, and weekday
     Args:
-    model: A string, the model name
+    model_name: A string, the model name
     year: An integer, the year
     month: An integer, the month
     weekday: An integer, the weekday
     Returns:
     forecast: A float, the forecasted demand"""
+    # Load the best model
+    if model_name == 'TBATS':
+        best_model = load(f'{model_path}tbats_model.joblib')
 
-    forecast = model.predict([[year, month, weekday]])
+    elif 'XGBoost' in model_name:
+        best_model = load(f'{model_path}{model_name}.joblib')
+
+    forecast = best_model.predict([[year, month, weekday]])
     return forecast
 
 

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cb6992177d9bb1142f37c344a0d26809 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_cb6992177d9bb1142f37c344a0d26809" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cb6992177d9bb1142f37c344a0d26809 = L.map(
+                "map_cb6992177d9bb1142f37c344a0d26809",
+                {
+                    center: [40.731550996105724, -74.04465822122565],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0ba4b4653badf256499f4b5362a24ad8 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_0ba4b4653badf256499f4b5362a24ad8.addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            var circle_marker_7df828a92ee5787af18985834ba05578 = L.circleMarker(
+                [40.74998490907138, -74.02715027332306],
+                {"bubblingMouseEvents": true, "color": "#dedeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dedeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.009385108947754, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_7df828a92ee5787af18985834ba05578.bindTooltip(
+                `<div>
+                     Station: 11 St & Washington St<br>Net Bike: -2.009385108947754
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8cbaeaca709f8a17c4de75a9439ab434 = L.circleMarker(
+                [40.75060414236896, -74.02402013540268],
+                {"bubblingMouseEvents": true, "color": "#d2d2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d2d2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.830758094787598, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_8cbaeaca709f8a17c4de75a9439ab434.bindTooltip(
+                `<div>
+                     Station: 12 St & Sinatra Dr N<br>Net Bike: -2.8307580947875977
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_913cbb382387be7cae60ef927012417e = L.circleMarker(
+                [40.752960630464955, -74.02435272932053],
+                {"bubblingMouseEvents": true, "color": "#e4e4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e4e4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.68265438079834, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_913cbb382387be7cae60ef927012417e.bindTooltip(
+                `<div>
+                     Station: 14 St Ferry - 14 St & Shipyard Ln<br>Net Bike: -1.6826543807983398
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bdda5cff3f7b7099ffeac57b328830ab = L.circleMarker(
+                [40.7422579775645, -74.03511106967926],
+                {"bubblingMouseEvents": true, "color": "#d4d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d4d4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.634347915649414, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_bdda5cff3f7b7099ffeac57b328830ab.bindTooltip(
+                `<div>
+                     Station: 4 St & Grand St<br>Net Bike: -2.634347915649414
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1e0753b99c0dae5a264d3303dea7d3af = L.circleMarker(
+                [40.740831733, -74.027396441],
+                {"bubblingMouseEvents": true, "color": "#fafaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fafaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.3505563735961914, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_1e0753b99c0dae5a264d3303dea7d3af.bindTooltip(
+                `<div>
+                     Station: 4 St & River St<br>Net Bike: -0.3505563735961914
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_40afefe009372d24527b9d6bd590577c = L.circleMarker(
+                [40.7443978330956, -74.03450086712837],
+                {"bubblingMouseEvents": true, "color": "#eeeeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#eeeeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.0240583419799805, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_40afefe009372d24527b9d6bd590577c.bindTooltip(
+                `<div>
+                     Station: 6 St & Grand St<br>Net Bike: -1.0240583419799805
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8b3f927c70f9a56ecef4579d37e89430 = L.circleMarker(
+                [40.74641264837719, -74.03797701001167],
+                {"bubblingMouseEvents": true, "color": "#dcdcff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dcdcff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.136432647705078, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_8b3f927c70f9a56ecef4579d37e89430.bindTooltip(
+                `<div>
+                     Station: 7 St & Monroe St<br>Net Bike: -2.136432647705078
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_66e5b35b1867c2ae9aefa2c2df98062d = L.circleMarker(
+                [40.745983882915624, -74.02819901704788],
+                {"bubblingMouseEvents": true, "color": "#eeeeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#eeeeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.082725524902344, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_66e5b35b1867c2ae9aefa2c2df98062d.bindTooltip(
+                `<div>
+                     Station: 8 St & Washington St<br>Net Bike: -1.0827255249023438
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_76c230ea4b7570e53644030406e9218c = L.circleMarker(
+                [40.74790720968899, -74.03841152787209],
+                {"bubblingMouseEvents": true, "color": "#ceceff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ceceff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.004580497741699, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_76c230ea4b7570e53644030406e9218c.bindTooltip(
+                `<div>
+                     Station: 9 St HBLR - Jackson St & 8 St<br>Net Bike: -3.004580497741699
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_935378b3483bb7f64f81e4a71aa8d584 = L.circleMarker(
+                [40.73981372311843, -74.03690412640572],
+                {"bubblingMouseEvents": true, "color": "#dedeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dedeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.038886070251465, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_935378b3483bb7f64f81e4a71aa8d584.bindTooltip(
+                `<div>
+                     Station: Adams St & 2 St<br>Net Bike: -2.038886070251465
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8938c7e7cfd9dad68e29d1593c5a394f = L.circleMarker(
+                [40.722103786686034, -74.07145500183105],
+                {"bubblingMouseEvents": true, "color": "#eaeaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#eaeaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.281643867492676, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_8938c7e7cfd9dad68e29d1593c5a394f.bindTooltip(
+                `<div>
+                     Station: Bergen Ave<br>Net Bike: -1.2816438674926758
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_089cb881c708e75ebfbc39054e68d658 = L.circleMarker(
+                [40.75453, -74.02658],
+                {"bubblingMouseEvents": true, "color": "#f4f4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f4f4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.662032127380371, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_089cb881c708e75ebfbc39054e68d658.bindTooltip(
+                `<div>
+                     Station: Bloomfield St & 15 St<br>Net Bike: -0.6620321273803711
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b03a1e2812afe8ab9d8bb0ea33d207ba = L.circleMarker(
+                [40.72601172964625, -74.05038893222809],
+                {"bubblingMouseEvents": true, "color": "#babaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#babaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.280951499938965, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_b03a1e2812afe8ab9d8bb0ea33d207ba.bindTooltip(
+                `<div>
+                     Station: Brunswick & 6th<br>Net Bike: -4.280951499938965
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_68895b31190ed4bdfa32b113a4b428c9 = L.circleMarker(
+                [40.7241765, -74.0506564],
+                {"bubblingMouseEvents": true, "color": "#bebeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bebeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.027212142944336, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_68895b31190ed4bdfa32b113a4b428c9.bindTooltip(
+                `<div>
+                     Station: Brunswick St<br>Net Bike: -4.027212142944336
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6a493ea4066595d90fad3d8f16c3f5e0 = L.circleMarker(
+                [40.74265933273143, -74.03223305940628],
+                {"bubblingMouseEvents": true, "color": "#dedeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dedeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.103196144104004, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_6a493ea4066595d90fad3d8f16c3f5e0.bindTooltip(
+                `<div>
+                     Station: Church Sq Park - 5 St & Park Ave<br>Net Bike: -2.103196144104004
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1870983689c0a5f20c3868036f2127ba = L.circleMarker(
+                [40.73736, -74.03097],
+                {"bubblingMouseEvents": true, "color": "#ffdcdc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdcdc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_1870983689c0a5f20c3868036f2127ba.bindTooltip(
+                `<div>
+                     Station: City Hall - Washington St & 1 St<br>Net Bike: 10.083419799804688
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8c0c7c783b187b8c936097d423058556 = L.circleMarker(
+                [40.74542, -74.03332],
+                {"bubblingMouseEvents": true, "color": "#dedeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dedeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.081141471862793, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_8c0c7c783b187b8c936097d423058556.bindTooltip(
+                `<div>
+                     Station: Clinton St & 7 St<br>Net Bike: -2.081141471862793
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_dd4e20b38a1171498b50ddc6a9a5f83c = L.circleMarker(
+                [40.73743, -74.03571],
+                {"bubblingMouseEvents": true, "color": "#e8e8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.422533988952637, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_dd4e20b38a1171498b50ddc6a9a5f83c.bindTooltip(
+                `<div>
+                     Station: Clinton St & Newark St<br>Net Bike: -1.4225339889526367
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1c867c8638c687531dd8c8acc2dc4c99 = L.circleMarker(
+                [40.71835519823214, -74.03891444206238],
+                {"bubblingMouseEvents": true, "color": "#fffcfc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffcfc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.072919845581055, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_1c867c8638c687531dd8c8acc2dc4c99.bindTooltip(
+                `<div>
+                     Station: Columbus Drive<br>Net Bike: 1.0729198455810547
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_db55dc781184a2b95fdd1e45a72d770c = L.circleMarker(
+                [40.74816121065146, -74.0324530005455],
+                {"bubblingMouseEvents": true, "color": "#e0e0ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0e0ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.914677619934082, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_db55dc781184a2b95fdd1e45a72d770c.bindTooltip(
+                `<div>
+                     Station: Columbus Park - Clinton St & 9 St<br>Net Bike: -1.914677619934082
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_91260e37596bdfb5a486e4a4b75dabfb = L.circleMarker(
+                [40.737711, -74.066921],
+                {"bubblingMouseEvents": true, "color": "#fff6f6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6f6", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.521076202392578, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_91260e37596bdfb5a486e4a4b75dabfb.bindTooltip(
+                `<div>
+                     Station: Dey St<br>Net Bike: 2.521076202392578
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3bcc8c09bf88619a5fd91d8ebe615574 = L.circleMarker(
+                [40.71517767732029, -74.03768330812454],
+                {"bubblingMouseEvents": true, "color": "#fffefe", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffefe", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.499476432800293, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_3bcc8c09bf88619a5fd91d8ebe615574.bindTooltip(
+                `<div>
+                     Station: Grand St<br>Net Bike: 0.49947643280029297
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7a0be2162a2e441b138f8aaa4b50f113 = L.circleMarker(
+                [40.75409, -74.0316],
+                {"bubblingMouseEvents": true, "color": "#e2e2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e2e2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.829685211181641, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_7a0be2162a2e441b138f8aaa4b50f113.bindTooltip(
+                `<div>
+                     Station: Grand St & 14 St<br>Net Bike: -1.8296852111816406
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c8f46d410f92cd8433751069c8309c74 = L.circleMarker(
+                [40.71958611647166, -74.04311746358871],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_c8f46d410f92cd8433751069c8309c74.bindTooltip(
+                `<div>
+                     Station: Grove St PATH<br>Net Bike: 94.23653411865234
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_07090e5e9af4440840d403e487fd248c = L.circleMarker(
+                [40.727595966, -74.044247311],
+                {"bubblingMouseEvents": true, "color": "#0000ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_07090e5e9af4440840d403e487fd248c.bindTooltip(
+                `<div>
+                     Station: Hamilton Park<br>Net Bike: -15.934952735900879
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2b0ce1ad6ca0e708824639c31da143df = L.circleMarker(
+                [40.7192517, -74.034234],
+                {"bubblingMouseEvents": true, "color": "#fff0f0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff0f0", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.204686164855957, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_2b0ce1ad6ca0e708824639c31da143df.bindTooltip(
+                `<div>
+                     Station: Harborside<br>Net Bike: 4.204686164855957
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e5ee14dd7ff4da0638b2d70c00f0db80 = L.circleMarker(
+                [40.73520838045357, -74.04696375131607],
+                {"bubblingMouseEvents": true, "color": "#f2f2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f2f2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.86846923828125, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_e5ee14dd7ff4da0638b2d70c00f0db80.bindTooltip(
+                `<div>
+                     Station: Hoboken Ave at Monmouth St<br>Net Bike: -0.86846923828125
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e9516e23df91bd2488e4e7a103e175cc = L.circleMarker(
+                [40.73593758446329, -74.03030455112457],
+                {"bubblingMouseEvents": true, "color": "#ffd4d4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffd4d4", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_e9516e23df91bd2488e4e7a103e175cc.bindTooltip(
+                `<div>
+                     Station: Hoboken Terminal - Hudson St & Hudson Pl<br>Net Bike: 12.332355499267578
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_702ff4afa7a2e003932ed414d571c726 = L.circleMarker(
+                [40.7360676564825, -74.02912706136703],
+                {"bubblingMouseEvents": true, "color": "#ff6e6e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff6e6e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_702ff4afa7a2e003932ed414d571c726.bindTooltip(
+                `<div>
+                     Station: Hoboken Terminal - River St & Hudson Pl<br>Net Bike: 41.95060348510742
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_05d7aa3849162d1153782876ec17bf2b = L.circleMarker(
+                [40.71653978099194, -74.0496379137039],
+                {"bubblingMouseEvents": true, "color": "#f6f6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f6f6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.5770158767700195, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_05d7aa3849162d1153782876ec17bf2b.bindTooltip(
+                `<div>
+                     Station: JC Medical Center<br>Net Bike: -0.5770158767700195
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cf6a91bc45e5dfa6b6003c0067d26352 = L.circleMarker(
+                [40.72528910781132, -74.04557168483734],
+                {"bubblingMouseEvents": true, "color": "#c2c2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c2c2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.828250885009766, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_cf6a91bc45e5dfa6b6003c0067d26352.bindTooltip(
+                `<div>
+                     Station: Jersey & 6th St<br>Net Bike: -3.8282508850097656
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_38cb36d51eef2c9c2f89aca7c375d6cb = L.circleMarker(
+                [40.71346382669195, -74.06285852193832],
+                {"bubblingMouseEvents": true, "color": "#c6c6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c6c6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.578888893127441, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_38cb36d51eef2c9c2f89aca7c375d6cb.bindTooltip(
+                `<div>
+                     Station: Lafayette Park<br>Net Bike: -3.5788888931274414
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_49ef7048d7feb66d69f4207e6bb7ca30 = L.circleMarker(
+                [40.74590996631558, -74.0572714805603],
+                {"bubblingMouseEvents": true, "color": "#ffe2e2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe2e2", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_49ef7048d7feb66d69f4207e6bb7ca30.bindTooltip(
+                `<div>
+                     Station: Leonard Gordon Park<br>Net Bike: 8.227408409118652
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9d30d88428c6e8b91a070132cfa7d71a = L.circleMarker(
+                [40.7112423, -74.0557013],
+                {"bubblingMouseEvents": true, "color": "#a6a6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a6a6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.480392456054688, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_9d30d88428c6e8b91a070132cfa7d71a.bindTooltip(
+                `<div>
+                     Station: Liberty Light Rail<br>Net Bike: -5.4803924560546875
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_dbb9936ed8ab2fda7d53c1a4b8b366e7 = L.circleMarker(
+                [40.7246050998869, -74.07840594649315],
+                {"bubblingMouseEvents": true, "color": "#eaeaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#eaeaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.325898170471191, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_dbb9936ed8ab2fda7d53c1a4b8b366e7.bindTooltip(
+                `<div>
+                     Station: Lincoln Park<br>Net Bike: -1.3258981704711914
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a9fecdd43a3afb7a0c7f76478d2f1fcb = L.circleMarker(
+                [40.73879, -74.0393],
+                {"bubblingMouseEvents": true, "color": "#e4e4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e4e4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.74100399017334, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_a9fecdd43a3afb7a0c7f76478d2f1fcb.bindTooltip(
+                `<div>
+                     Station: Madison St & 1 St<br>Net Bike: -1.7410039901733398
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_dda34a0ac276d7af97e41d9cbf884b5c = L.circleMarker(
+                [40.74994325412246, -74.03586477041245],
+                {"bubblingMouseEvents": true, "color": "#f2f2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f2f2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8575515747070312, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_dda34a0ac276d7af97e41d9cbf884b5c.bindTooltip(
+                `<div>
+                     Station: Madison St & 10 St<br>Net Bike: -0.8575515747070312
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b8aa2dfa6c0b0b34a259e1e165facda9 = L.circleMarker(
+                [40.74313993965626, -74.04004096984863],
+                {"bubblingMouseEvents": true, "color": "#e2e2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e2e2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.843449592590332, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_b8aa2dfa6c0b0b34a259e1e165facda9.bindTooltip(
+                `<div>
+                     Station: Mama Johnson Field - 4 St & Jackson St<br>Net Bike: -1.843449592590332
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8fb1e9aa89523c4b6593f6e9fcbce9e1 = L.circleMarker(
+                [40.71458403535893, -74.04281705617905],
+                {"bubblingMouseEvents": true, "color": "#c4c4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c4c4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.693996429443359, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_8fb1e9aa89523c4b6593f6e9fcbce9e1.bindTooltip(
+                `<div>
+                     Station: Marin Light Rail<br>Net Bike: -3.6939964294433594
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_37b92b0323a619801ea99e99ba6bfa7d = L.circleMarker(
+                [40.740802, -74.042521],
+                {"bubblingMouseEvents": true, "color": "#ccccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ccccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.112453460693359, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_37b92b0323a619801ea99e99ba6bfa7d.bindTooltip(
+                `<div>
+                     Station: Marshall St & 2 St<br>Net Bike: -3.1124534606933594
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c26793ce97b75bf4ba5614eafe51fcf6 = L.circleMarker(
+                [40.72568548362901, -74.04879033565521],
+                {"bubblingMouseEvents": true, "color": "#d0d0ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d0d0ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.949545860290527, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_c26793ce97b75bf4ba5614eafe51fcf6.bindTooltip(
+                `<div>
+                     Station: Monmouth and 6th<br>Net Bike: -2.9495458602905273
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3f235ab2010f94361d48ff1627ae2299 = L.circleMarker(
+                [40.7124188237569, -74.03852552175522],
+                {"bubblingMouseEvents": true, "color": "#c6c6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c6c6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.604216575622559, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_3f235ab2010f94361d48ff1627ae2299.bindTooltip(
+                `<div>
+                     Station: Morris Canal<br>Net Bike: -3.6042165756225586
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ff85dd03c056122739fa66bea51100c3 = L.circleMarker(
+                [40.72152515, -74.046304543],
+                {"bubblingMouseEvents": true, "color": "#f4f4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f4f4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.6887311935424805, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_ff85dd03c056122739fa66bea51100c3.bindTooltip(
+                `<div>
+                     Station: Newark Ave<br>Net Bike: -0.6887311935424805
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_045c475a602b990691d97b498c5dab22 = L.circleMarker(
+                [40.7272235, -74.0337589],
+                {"bubblingMouseEvents": true, "color": "#fff6f6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6f6", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.508615493774414, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_045c475a602b990691d97b498c5dab22.bindTooltip(
+                `<div>
+                     Station: Newport PATH<br>Net Bike: 2.508615493774414
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_314fe22e2ed9d939d8d0ec4f5784a8ab = L.circleMarker(
+                [40.7287448, -74.0321082],
+                {"bubblingMouseEvents": true, "color": "#ffeeee", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeeee", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.043508529663086, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_314fe22e2ed9d939d8d0ec4f5784a8ab.bindTooltip(
+                `<div>
+                     Station: Newport Pkwy<br>Net Bike: 5.043508529663086
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2099e69d6134814cfee087ce62bf946e = L.circleMarker(
+                [40.7376037, -74.0524783],
+                {"bubblingMouseEvents": true, "color": "#dedeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dedeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.004181861877441, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_2099e69d6134814cfee087ce62bf946e.bindTooltip(
+                `<div>
+                     Station: Oakland Ave<br>Net Bike: -2.0041818618774414
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e6ed2430a2c12c4fe649c06ed42c3be3 = L.circleMarker(
+                [40.737364531, -74.028816581],
+                {"bubblingMouseEvents": true, "color": "#fff8f8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.779109954833984, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_e6ed2430a2c12c4fe649c06ed42c3be3.bindTooltip(
+                `<div>
+                     Station: River St & 1 St<br>Net Bike: 1.7791099548339844
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_931f18d279149f9bf4ac6a52d8b8bed0 = L.circleMarker(
+                [40.7443187, -74.0439909],
+                {"bubblingMouseEvents": true, "color": "#d6d6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d6d6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.552482604980469, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_931f18d279149f9bf4ac6a52d8b8bed0.bindTooltip(
+                `<div>
+                     Station: Riverview Park<br>Net Bike: -2.5524826049804688
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5214b866189fa733a0e3841a8ba714eb = L.circleMarker(
+                [40.73698221818716, -74.02778059244156],
+                {"bubblingMouseEvents": true, "color": "#ffeaea", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeaea", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.140308380126953, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_5214b866189fa733a0e3841a8ba714eb.bindTooltip(
+                `<div>
+                     Station: South Waterfront Walkway - Sinatra Dr & 1 St<br>Net Bike: 6.140308380126953
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_63b0fd5c698388da657f788c693b3a8f = L.circleMarker(
+                [40.73755127245804, -74.04166370630264],
+                {"bubblingMouseEvents": true, "color": "#fff6f6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6f6", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.694971084594727, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_63b0fd5c698388da657f788c693b3a8f.bindTooltip(
+                `<div>
+                     Station: Southwest Park - Jackson St & Observer Hwy<br>Net Bike: 2.6949710845947266
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_131688ebf4a6a588965bfc9514ed087c = L.circleMarker(
+                [40.74313282710551, -74.02698867022991],
+                {"bubblingMouseEvents": true, "color": "#e6e6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e6e6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.5307207107543945, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_131688ebf4a6a588965bfc9514ed087c.bindTooltip(
+                `<div>
+                     Station: Stevens - River Ter & 6 St<br>Net Bike: -1.5307207107543945
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c00382bd2165d8f5ad4e9d8b0ec156a0 = L.circleMarker(
+                [40.71848892, -74.047726625],
+                {"bubblingMouseEvents": true, "color": "#fcfcff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fcfcff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.194509506225586, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_c00382bd2165d8f5ad4e9d8b0ec156a0.bindTooltip(
+                `<div>
+                     Station: Van Vorst Park<br>Net Bike: -0.19450950622558594
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_58927be6651ac135810cb9bcb8fd7bc3 = L.circleMarker(
+                [40.7211236, -74.03805095],
+                {"bubblingMouseEvents": true, "color": "#ffecec", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffecec", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.385274887084961, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_58927be6651ac135810cb9bcb8fd7bc3.bindTooltip(
+                `<div>
+                     Station: Warren St<br>Net Bike: 5.385274887084961
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_246e84a61651285740bbfa1b3e984a25 = L.circleMarker(
+                [40.7518674823282, -74.03037697076797],
+                {"bubblingMouseEvents": true, "color": "#ececff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ececff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.223438262939453, "stroke": true, "weight": 3}
+            ).addTo(map_cb6992177d9bb1142f37c344a0d26809);
+        
+    
+            circle_marker_246e84a61651285740bbfa1b3e984a25.bindTooltip(
+                `<div>
+                     Station: Willow Ave & 12 St<br>Net Bike: -1.2234382629394531
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

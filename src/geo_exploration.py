@@ -19,15 +19,15 @@ def sample_data(df, sample_size):
     return df.sample(sample_size)
 
 
-def visualize_heatmap(df):
+def visualize_heatmap(df, lat='start_lat', lng='start_lng'):
     """Visualize the heatmap of the start stations, overlayed on the map
     Args:
         df (pd.DataFrame): The dataframe to be visualized
         """
     m = folium.Map(
         location=[
-            df['start_lat'].mean(),
-            df['start_lng'].mean()],
+            df[lat].mean(),
+            df[lng].mean()],
         zoom_start=12)
     m.add_child(plugins.HeatMap(
         data=df[['start_lat', 'start_lng']], radius=15))
