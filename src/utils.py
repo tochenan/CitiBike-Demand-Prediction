@@ -1,7 +1,7 @@
 from glob import glob
 import pandas as pd
 import os
-PATH = 'data/'
+PATH = 'data/raw/'
 
 
 def load_data(path=PATH):

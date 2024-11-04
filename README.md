@@ -30,13 +30,13 @@ The datasets used include historical Citi Bike usage patterns, geographical data
   
   - **network.py**: Implements functions focused on network feature extraction.
   
-  - **network_exploration.py**- Includes functions to examine the relationship between network feature of a station, its geographical location and the current hour. Contains time-lapsed interactive visualisation.
+  - **network_exploration.ipynb**- A jupyter notebook examining the relationship between network feature of a station, its geographical location and the current hour. Contains time-lapsed interactive visualisation.
   
   - **demand_forecasting.py**: Contains the predictive models and associated utilities for forecasting bike demand, employing time series analysis and machine learning techniques. Produce summary of model performance stored in evaluation/demand_model_performance.csv
   
   - **allocation_forecasting.py**: Features code for developing and refining models that predict bike allocation needs across various stations to ensure optimal availability and service efficiency. To better predict bike allocation, separate models were trained to predict incoming and outgoing bikes for each bike stations. 
   
-  -  **model_explainability.py**: This script is focused on providing insights into the decision-making process of machine learning models used within the project. It employs various techniques to explain the predictions made by models, enhancing transparency and trust. Key functionalities include:
+  -  **model_explainability.py**: This script is focused on providing insights into the decision-making process of machine learning models used within the project. It employs various techniques to explain the predictions made by models. Run it after alloation_forecasting.py. Key functionalities include:
  	 - **Feature Importance**: Calculates the importance scores for each feature in the model, helping to identify what drives the model's decisions.
  	 - **SHAP Values**: Implements SHAP (SHapley Additive exPlanations) to determine how each feature contributes to individual predictions, offering a deep dive into the model's logic.
 	 - **Map Visualiation**: Visualize net number of bikes in each station using the best performing models and overlay it on top of the map.
@@ -47,7 +47,7 @@ The datasets used include historical Citi Bike usage patterns, geographical data
 
 - **evaluation/**: Stores summary of model performance result for both demand and allocation forecasting tasks.
 
-- **viz/**: Dedicated to data visualizations created during the analysis phase. This directory includes both exploratory graphics used to derive insights during model building and final visualizations that showcases the performance of the model.
+- **viz/**: Dedicated to data visualizations created during the analysis phase. This directory includes both exploratory graphics used to derive insights during model building and final visualizations that showcases the performance of the model. It also includes html objects that overlay important station statistics on top of a map.
 
 
 ## Setup Instructions

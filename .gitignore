@@ -1,3 +1,3 @@
-data/**
+data/raw/**
 .DS_store
 viz/causalens_MC.pptx
