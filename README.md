@@ -19,9 +19,12 @@ The datasets used include historical Citi Bike usage patterns, geographical data
 
 ## Folder Structure
 
-- **data/**: This directory contains all datasets utilized in the project. For reasons of privacy and data size, these files are not tracked by version control. Guidance on accessing and using these datasets can be found in accompanying documentation within the directory.
-
-- **notebooks/**: Houses Jupyter notebooks that provide a detailed exploratory data analysis and the steps involved in model training. These notebooks are essential for understanding the data features, the preprocessing steps applied, and the methodologies behind the model development.
+- **data/**: This directory contains all datasets utilized in the project. 
+  - **raw/**: This subdirectory houses the original, unmodified data files as they were collected. Original data from https://citibikenyc.com/system-data.
+  - **train/**: This folder includes data sets specifically prepared for training the machine learning models. These data sets have additional preprocessing or feature engineering tailored for optimizing model performance.
+  - **test/**: Holds data sets used exclusively for testing the models. 
+  - **mapping/**: Stores auxiliary files that are useful for data transformation and analysis.
+ 
 
 - **src/**: Contains the source code for all functions and models related to the project, organized as follows:
   - **seasonality.py**: Implements functions to analyze seasonal trends in the dataset, crucial for understanding temporal patterns that influence model predictions.
@@ -53,3 +56,4 @@ The datasets used include historical Citi Bike usage patterns, geographical data
 ## Setup Instructions
 1. **Clone the repository**: https://github.com/tochenan/Causallens_Takehome.git
 2. **Set up the environment** (ensure Anaconda is installed): dependency requirement can be found in environment.yml
+3. **Download** : download original data from https://citibikenyc.com/system-data and put the data in data/raw.
