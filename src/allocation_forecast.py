@@ -1,8 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-from sklearn.model_selection import GridSearchCV, train_test_split
-from tbats import BATS, TBATS
+from sklearn.model_selection import GridSearchCV
 from xgboost import XGBRegressor
 
 from network import graph_analysis
@@ -67,7 +66,7 @@ def spatial_demand_extraction(df):
     return demand
 
 
-def create_station_location_mapping(df, save = True):
+def create_station_location_mapping(df, save=True):
     """Create a mapping of station names to their respective latitudes and longitudes
     Args:
         df (pd.DataFrame): The dataframe containing the data
@@ -90,7 +89,10 @@ def create_station_location_mapping(df, save = True):
         'station_name')[['lat', 'lng']].apply(tuple, axis=1).to_dict()
     
     if save:
-        pd.DataFrame(station_location_dict.items(), columns=['station_name', 'location']).to_csv('data/mapping/station_location_mapping.csv', index=False)
+        pd.DataFrame(
+            station_location_dict.items(),
+            columns=['station_name', 'location']
+        ).to_csv('data/mapping/station_location_mapping.csv', index=False)
     return station_location_dict
 
 
@@ -138,7 +140,7 @@ def feature_preparation(df):
 
     # Add lookback columns for each feature
     for feature in features:
-        for i in range(1, 24):  # Create 12 lookback columns
+        for i in range(1, 24):  # Create 23 lookback columns
             combined_df[f'{feature}_lag_{i}'] = combined_df.groupby('station_name')[
                 feature].shift(i)
 
@@ -184,8 +186,6 @@ def xgboost_optimised(train, test, target='net_bikes'):
     X_train = train.drop([target], axis=1)
     y_train = train[target]
     X_test = test.drop([target], axis=1)
-    y_test = test[target]
-
     # Fit the model
     grid_search.fit(X_train, y_train)
 
@@ -219,8 +219,6 @@ def xgboost_fit(train, test, target='incoming_bikes'):
     X_train = train.drop([target], axis=1)
     y_train = train[target]
     X_test = test.drop([target], axis=1)
-    y_test = test[target]
-
     xgb_model.fit(X_train, y_train)
 
     # Use the model to make predictions
@@ -249,7 +247,7 @@ def model_evaluation(test, forecast):
     return performance
 
 
-def train_test_split(df, test_size=0.2, save_path='data/', save=False):
+def split_train_test(df, test_size=0.2, save_path='data/', save=False):
     """Split the data into train and test set for forecasting
     Args:
     df (pd.DataFrame): The dataframe containing the data
@@ -270,9 +268,9 @@ def train_test_split(df, test_size=0.2, save_path='data/', save=False):
 
 
 def train_and_evaluate_all_models(
-        combined_df,
-        target='incoming_bikes',
-        features=features):
+    combined_df,
+    target='incoming_bikes',
+    features=features):
     """Train and evaluate all models for the given target variable
     Args:
     combined_df (pd.DataFrame): The dataframe containing all the features and target variable
@@ -287,7 +285,7 @@ def train_and_evaluate_all_models(
     # Untransformed fit
     combined_df_encoded = pd.get_dummies(
         combined_df[features + [target]], columns=['year'])
-    train, test = train_test_split(combined_df_encoded, test_size=0.2)
+    train, test = split_train_test(combined_df_encoded, test_size=0.2)
     _, xgb_fitted, xgb_forecasts = xgboost_fit(train, test, target=target)
 
     untransformed_performance = model_evaluation(test[target], xgb_forecasts)
@@ -297,18 +295,19 @@ def train_and_evaluate_all_models(
     combined_df['log'] = np.log1p(combined_df[target])
     combined_df_encoded = pd.get_dummies(
         combined_df[features + ['log']], columns=['year'])
-    train_log, test_log = train_test_split(combined_df_encoded, test_size=0.2)
+    train_log, test_log = split_train_test(combined_df_encoded, test_size=0.2)
     _, xgb_fitted_log, xgb_forecasts_log = xgboost_fit(
         train_log, test_log, target='log')
 
     log_fitted_performance = model_evaluation(test_log['log'], xgb_forecasts_log)
 
     # log-transformed fit and filter out low demand stations
-    filtered_df = combined_df[combined_df[target] > 9]
+    filtered_df = combined_df[combined_df[target] > 9].copy()
     filtered_df['log'] = np.log1p(filtered_df[target])
     combined_df_encoded = pd.get_dummies(
         filtered_df[features + ['log']], columns=['year'])
-    train_filtered, test_filtered = train_test_split(combined_df_encoded, test_size=0.2, save=True)
+    train_filtered, test_filtered = split_train_test(
+        combined_df_encoded, test_size=0.2, save=True)
     best_model, xgb_fitted_log_fitlered, xgb_forecasts_log_filtered = xgboost_fit(
         train_filtered, test_filtered, target='log')
 
@@ -321,7 +320,7 @@ def train_and_evaluate_all_models(
     features = features + lag_features
     combined_df_encoded = pd.get_dummies(
         filtered_df[features + ['log']], columns=['year'])
-    train_lag, test_lag = train_test_split(combined_df_encoded, test_size=0.2)
+    train_lag, test_lag = split_train_test(combined_df_encoded, test_size=0.2)
     _, lag_xgb_fitted, lag_xgb_forcasts = xgboost_fit(
         train_lag, test_lag, target='log')
 

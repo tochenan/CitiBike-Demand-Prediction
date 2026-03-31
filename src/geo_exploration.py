@@ -62,7 +62,7 @@ def visualize_start_station_distribution(df):
         height=10)
     sns.despine()
     plt.savefig(f'{viz_path}month_distribution.png', dpi=300, transparent=True)
-    plt.show
+    plt.show()
 
     # visualize weekday distribution
     plt.figure(figsize=(10, 6))

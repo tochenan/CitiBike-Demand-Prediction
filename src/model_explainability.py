@@ -5,10 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import shap
-import xgboost as xgb
 from xgboost import XGBRegressor
-
-from allocation_forecast import create_station_location_mapping
 
 model_path = 'models/'
 data_path = 'data/'
@@ -177,8 +174,12 @@ def generate_net_bike_predictions(
     train, test = load_train_test_data(data_path)
     original = pd.concat([train, test], axis=0)
 
-    filtered_df = original[(original[f'year_{year}']) & (original['month'] == month) & (
-        original['hour'] == hour) & (original['weekday'] == weekday)]
+    filtered_df = original[
+        (original[f'year_{year}'])
+        & (original['month'] == month)
+        & (original['hour'] == hour)
+        & (original['weekday'] == weekday)
+    ].copy()
 
     filtered_df['month'] = forecast_month
 
@@ -269,9 +270,10 @@ def visualize_netbikes(predictions):
             fill=True,
             fill_color=get_color(row['net_bikes']),
             fill_opacity=0.7,
-            tooltip=f"Station: {
-                row['station_name']}<br>Net Bike: {
-                row['net_bikes']}"
+            tooltip=(
+                f"Station: {row['station_name']}<br>"
+                f"Net Bike: {row['net_bikes']:.2f}"
+            )
         ).add_to(m)
 
     # Save the map as an HTML file

@@ -1,59 +1,42 @@
-# Citi Bike Demand Prediction and Allocation
+## Citi Bike Demand and Allocation Forecasting
 
-## Project Overview
-This project leverages exploratory data analysis and machine learning to predict daily and hourly demand for Citi Bike services in New York City. The goal is to optimize bike allocation across various stations to meet fluctuating demands efficiently.
+This repository contains data prep, modeling, and visualization code for Citi Bike demand forecasting and station-level allocation. The code covers temporal demand modeling, station network features, and map-based outputs to help interpret model results.
 
-## Objectives
-The project is structured around three key objectives:
-1. **Exploratory Data Analysis**: To understand trends, patterns, and anomalies in the usage of Citi Bike services.
-2. **Time Series Forecasting**: To predict peak daily demand using advanced forecasting models.
-3. **Allocation Modeling**: To predict incoming and outgoing bike traffic for every station to ensure optimal distribution and availability.
+## What is included
+- Time-series demand forecasting with TBATS and XGBoost.
+- Station-level incoming/outgoing bike prediction with spatial + network features.
+- Graph-based feature extraction from station-to-station trip flows.
+- Visualization utilities and map overlays for model outputs.
 
-## Data
-The datasets used include historical Citi Bike usage patterns, geographical data of bike stations, and temporal data such as time of day and day of the week.
-- **Note**: Data files are not included in this repository. Source data can be found on https://citibikenyc.com/system-data.
+## Repository layout
+- **data/**: Input data and derived splits.
+  - **raw/**: Original Citi Bike CSVs.
+  - **train/** and **test/**: Train/test splits for station models.
+  - **mapping/**: Station name to location mapping.
+- **evaluation/**: Model performance summaries (CSV).
+- **models/**: Saved TBATS and XGBoost models.
+- **src/**: Python modules for preprocessing, modeling, and visualization.
+- **viz/**: Output figures and interactive HTML maps.
 
-## Models Used
-- **Time Series Forecasting**: We employ TBATS and XGBoost models, using features such as year, month, and weekday to forecast demand.
-- **Machine Learning Allocation Model**: This model uses XGBoost trained on features including year, month, weekday, hour, geographical location, and a graph feature of each station to predict bike allocation needs.
+## Data expectations
+Place Citi Bike system data CSVs in **data/raw/**. The loader reads all CSVs in that directory and sorts by `started_at`. Source data: https://citibikenyc.com/system-data
 
-## Folder Structure
+## Environment
+Create the environment from **environment.yml** (Conda) or install the listed dependencies manually.
 
-- **data/**: This directory contains all datasets utilized in the project. 
-  - **raw/**: This subdirectory houses the original, unmodified data files as they were collected. Original data from https://citibikenyc.com/system-data.
-  - **train/**: This folder includes data sets specifically prepared for training the machine learning models. These data sets have additional preprocessing or feature engineering tailored for optimizing model performance.
-  - **test/**: Holds data sets used exclusively for testing the models. 
-  - **mapping/**: Stores auxiliary files that are useful for data transformation and analysis.
- 
+## How to run
+Run scripts directly from the project root:
 
-- **src/**: Contains the source code for all functions and models related to the project, organized as follows:
-  - **seasonality.py**: Implements functions to analyze seasonal trends in the dataset, crucial for understanding temporal patterns that influence model predictions.
-  
-  - **geo_exploration.py**: Includes scripts for geographic data exploration and analysis, helping to identify spatial patterns and the influence of geographical factors on bike usage.
-  
-  - **network.py**: Implements functions focused on network feature extraction.
-  
-  - **network_exploration.ipynb**- A jupyter notebook examining the relationship between network feature of a station, its geographical location and the current hour. Contains time-lapsed interactive visualisation.
-  
-  - **demand_forecasting.py**: Contains the predictive models and associated utilities for forecasting bike demand, employing time series analysis and machine learning techniques. Produce summary of model performance stored in evaluation/demand_model_performance.csv
-  
-  - **allocation_forecasting.py**: Features code for developing and refining models that predict bike allocation needs across various stations to ensure optimal availability and service efficiency. To better predict bike allocation, separate models were trained to predict incoming and outgoing bikes for each bike stations. 
-  
-  -  **model_explainability.py**: This script is focused on providing insights into the decision-making process of machine learning models used within the project. It employs various techniques to explain the predictions made by models. Run it after alloation_forecasting.py. Key functionalities include:
- 	 - **Feature Importance**: Calculates the importance scores for each feature in the model, helping to identify what drives the model's decisions.
- 	 - **SHAP Values**: Implements SHAP (SHapley Additive exPlanations) to determine how each feature contributes to individual predictions, offering a deep dive into the model's logic.
-	 - **Map Visualiation**: Visualize net number of bikes in each station using the best performing models and overlay it on top of the map.
-  
-  - **utils.py**: Provides utility functions that are commonly used across the project, such as data loading, preprocessing, and data transformation routines, ensuring code reusability and modular architecture.
+```bash
+python src/demand_forecast.py
+python src/allocation_forecast.py
+python src/model_explainability.py
+python src/geo_exploration.py
+python src/seasonality.py
+python src/network.py
+```
 
-- **model/**: Stores serialized formats of the best-performing models. This directory may also include configuration files or additional metadata that describes model parameters, training procedures, and performance metrics, facilitating model replication or further development.
-
-- **evaluation/**: Stores summary of model performance result for both demand and allocation forecasting tasks.
-
-- **viz/**: Dedicated to data visualizations created during the analysis phase. This directory includes both exploratory graphics used to derive insights during model building and final visualizations that showcases the performance of the model. It also includes html objects that overlay important station statistics on top of a map.
-
-
-## Setup Instructions
-1. **Clone the repository**: https://github.com/tochenan/Causallens_Takehome.git
-2. **Set up the environment** (ensure Anaconda is installed): dependency requirement can be found in environment.yml
-3. **Download** : download original data from https://citibikenyc.com/system-data and put the data in data/raw.
+## Outputs
+- **evaluation/**: Model performance CSVs for demand and allocation.
+- **models/**: Saved model artifacts for re-use.
+- **viz/**: PNGs and HTML maps (heatmaps, forecasts, net bike overlays).

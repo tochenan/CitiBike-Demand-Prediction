@@ -28,7 +28,7 @@ def data_preprocessing():
     df = load_data()
     df = preprocess(df)
     demand = temporal_demand_extraction(df)
-    train, test = train_test_split(demand)
+    train, test = split_train_test(demand)
     return df, demand, train, test
 
 
@@ -39,12 +39,12 @@ def temporal_demand_extraction(df):
     Returns:
     A pandas dataframe"""
     # Extract the temporal demand
-    demand = df.groupby(['year_started',
-                         'month_started',
-                         'weekday_started',
-                         'hour_started']).size().reset_index(name='count')
-    demand = demand.groupby(['year_started', 'month_started', 'weekday_started']).agg(
-        {'count': 'max'}).reset_index()
+    demand = df.groupby(
+        ['year_started', 'month_started', 'weekday_started', 'hour_started']
+    ).size().reset_index(name='count')
+    demand = demand.groupby(
+        ['year_started', 'month_started', 'weekday_started']
+    ).agg({'count': 'max'}).reset_index()
     demand.rename(
         columns={
             'year_started': 'year',
@@ -108,7 +108,7 @@ def visualize_seasonality_decomposition(df, period=7):
 
 # MODELING
 
-def train_test_split(df, test_size=0.2):
+def split_train_test(df, test_size=0.2):
     """Split the data into train and test set for forecasting
     Args:
     df: A pandas dataframe
@@ -196,8 +196,6 @@ def xgboost_forecast(train, test, model_name='xgboost'):
     X_train = train.drop(['count'], axis=1)
     y_train = train['count']
     X_test = test.drop(['count'], axis=1)
-    y_test = test['count']
-
     # Assuming X_train and y_train are your features and target
     grid_search.fit(X_train, y_train)
 
@@ -226,7 +224,7 @@ def model_evaluation(test, forecast):
 
     mae = mean_absolute_error(test, forecast)
     rmse = np.sqrt(mean_squared_error(test, forecast))
-    mape = np.mean(np.abs((test - forecast) / test)) * 100
+    mape = np.mean(np.abs((test - forecast) / (test + 1e-10))) * 100
 
     performance = pd.DataFrame({'MAE': [mae], 'RMSE': [rmse], 'MAPE': [mape]})
     return performance
@@ -252,7 +250,7 @@ def train_and_evaluate_all_models(demand, train, test):
 
     # Fit the time-lagged features to XGBoost model
     demand = generate_time_lagged_features(demand)
-    train_lagged, test_lagged = train_test_split(demand)
+    train_lagged, test_lagged = split_train_test(demand)
     xgb_lagged_fitted, xgb_lagged_forcast = xgboost_forecast(
         train_lagged, test_lagged, 'XGBoost with time-lagged features')
 
@@ -296,12 +294,13 @@ def forecast_demand(model_name, year, month, weekday):
     # Load the best model
     if model_name == 'TBATS':
         best_model = load(f'{model_path}tbats_model.joblib')
+        return best_model.forecast(steps=1)
 
-    elif 'XGBoost' in model_name:
+    if 'XGBoost' in model_name:
         best_model = load(f'{model_path}{model_name}.joblib')
+        return best_model.predict([[year, month, weekday]])
 
-    forecast = best_model.predict([[year, month, weekday]])
-    return forecast
+    raise ValueError(f'Unknown model name: {model_name}')
 
 
 # VISUALIZATION
